@@ -8,7 +8,6 @@ dns_resolver_ips:
   - 8.8.8.8
 heartbeat_interval: 1m
 heartbeat_tolerance: 5s
-inspect_db_size: 104857600 # 100mb
 inspect_db_size: 500000000
 log_level: info
 log_format: json
