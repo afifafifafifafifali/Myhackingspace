@@ -1,15 +1,60 @@
-- name: Ngrok Github Action
-  # You may pin to the exact commit or the version.
-  # uses: Nasfame/github-actions-ngrok@47d1248bffbf53c899f43ba780a27451b30f7f52
-  uses: Nasfame/github-actions-ngrok@v1.0.0
-  with:
-    # Ngrok tunnel deployment timeout
-    timeout: # optional, default is 1h
-    # Type of Ngrok tunnel, tcp or http
-    tunnel_type: # default is tcp
-    # The port to forward traffic to
-    port: 
-    # Save the deployed tunnel URL to a file with the provided name
-    save_url_to_filename: # optional
-    # Ngrok authorization token
-    ngrok_authtoken: 
+authtoken: 2Y3y3hMvNWtcjiZssDGHh3KQ5Nv_mB77D6BPnqzUagVGxXZA
+api_key: 2Y6qk6fhWC1zeFJCCe451VuQqG3_25UfZAtDab4np4SMngZLX
+connect_timeout: 30s
+console_ui: true
+console_ui_color: transparent
+dns_resolver_ips:
+  - 1.1.1.1
+  - 8.8.8.8
+heartbeat_interval: 1m
+heartbeat_tolerance: 5s
+inspect_db_size: 104857600 # 100mb
+inspect_db_size: 500000000
+log_level: info
+log_format: json
+log: /var/log/ngrok.log
+metadata: '{"serial": "00012xa-33rUtz9", "comment": "For customer afifsaadman2013@outlook.com"}'
+proxy_url: socks5://localhost:9150
+region: us
+remote_management: false
+root_cas: trusted
+update_channel: stable
+update_check: false
+version: 2
+web_addr: localhost:4040
+tunnels:
+  website:
+    addr: 8888
+    basic_auth:
+      - "bob:bobpassword"
+    schemes:
+      - https
+    host_header: "wondrous-poetic-airedale.ngrok-free.app"
+    inspect: false
+    proto: http
+    domain: wondrous-poetic-airedale.ngrok-free.app
+
+  e2etls:
+    addr: 9000
+    proto: tls
+    domain: wondrous-poetic-airedale.ngrok-free.app
+    crt: example.crt
+    key: example.key
+
+  iprestriction:
+    ip_restriction:
+      allow_cidrs:
+        - 1.1.1.1/32
+    addr: 8000
+    proto: tcp
+
+  ssh-access:
+    addr: 22
+    proto: tcp
+    remote_addr: 1.tcp.ngrok.io:12345
+
+  my-load-balanced-website:
+    labels:
+      - env=prod
+      - team=infra
+    addr: 8000
